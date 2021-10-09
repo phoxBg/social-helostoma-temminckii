@@ -97,25 +97,33 @@ def perfil():
 
 @app.route("/usuario/<id_usuario>",methods=["GET"])
 def usuario_informacion(id_usuario):
-    #validacion simple de usuario
+    #validacion simple de usuario ..............................................
     if id_usuario in usuarios_sistema:
-        return f"Pagina del Perfil del usuario {id_usuario}"
+        return f"Pagina del Perfil del usuario {id_usuario}"    #validacion simple de usuario
     else:
         return f"Error, el usuario {id_usuario} no exite en la base de datos"
 
-#Perfil admin
+#Perfil admin  ..............
+
 @app.route("/admin/<id_admin>",methods=["GET"])
 def admin_informacion(id_admin):
-    return f"Pagina del Perfil del usuario Admin {id_admin}"
+    if id_admin in usuarios_sistema:
+        return f"Pagina del Perfil del usuario Admin {id_admin}"   #validacion simple de Perfil admin
+    else:
+        return f"Error, el usuario {id_admin} no exite en la base de datos"
 
-#Perfil superadmin
+#Perfil superadmin ............
+
 @app.route("/superadmin/<id_superadmin>",methods=["GET"])
 def superadmin_informacion(id_superadmin):
-    return f"Pagina del Perfil del usuario Superadmin {id_superadmin}"
+    if id_superadmin in usuarios_sistema:
+        return f"Pagina del Perfil del usuario Superadmin {id_superadmin}"  #validacion simple de Perfil superadmin
+    else:
+        return f"Error, el usuario {id_superadmin} no exite en la base de datos"
 
 @app.route("/publicaciones",methods=["GET"])
 def publicacion():
-    #return "Pagina de todas las publicaciones"  #publicaciones.html
+    #return "Pagina de todas las publicaciones"  #publicaciones.html .....................
     return render_template("publicaciones.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista_publicaciones)
 
 @app.route("/detalle_pub/<id_publicacion>",methods=["GET","POST"])
