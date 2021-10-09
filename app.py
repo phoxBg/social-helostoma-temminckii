@@ -113,6 +113,87 @@ def admin_informacion(id_admin):
 def superadmin_informacion(id_superadmin):
     return f"Pagina del Perfil del usuario Superadmin {id_superadmin}"        
 
+@app.route("/publicaciones",methods=["GET"])
+def publicacion():
+    #return "Pagina de todas las publicaciones"  #publicaciones.html   
+    return render_template("publicaciones.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista_publicaciones)
+
+@app.route("/detalle_pub/<id_publicacion>",methods=["GET","POST"])
+def detalle_pub(id_publicacion):
+    try:
+        id_publicacion=int(id_publicacion)
+    except Exception as e:
+        id_publicacion=0
+
+    if id_publicacion in lista_publicaciones:
+        return lista_publicaciones[id_publicacion]
+    else:
+        return f"Error, la publicacion {id_publicacion} no exite en la base de datos"      
+        #return f"Pagina detalle de la publicacion {id_publicacion}"  #detalla_pub.html      
+
+@app.route("/msg",methods=["GET"])
+def msg():
+    #return f"Pagina de Mensajes"  #msg.html   
+    return render_template("mensajes.html", sesion_iniciada=sesion_iniciada,lista_mensaje=lista_mensaje)
+
+
+@app.route("/msg_privado/<id_msg>",methods=["GET","POST"])
+def msg_privado(id_msg):
+    try:
+        id_msg=int(id_msg)
+    except Exception as e:
+        id_publicacion=0   
+
+    if id_msg in lista_mensaje:
+        return lista_mensaje[id_msg]
+    else:
+        return f"Error, el mensaje {id_msg} no exite en la base de datos"   
+    #return f"Pagina - Mensaje privado : {id_msg}"  #msg_privado.html       
+
+@app.route("/register" , methods=["GET","POST"])
+def register():
+    try:
+        if request.method=="POST":
+            user1=request.form["username"]
+            pass1=request.form["password"]
+            c_pass1=request.form["c_password"]            
+            email=request.form["correo"]
+            error = None
+            
+            if not utils.isUsernameValid(user1):
+                error ="El usuario no es correcto"
+                flash(error)
+                return render_template("register.html")
+            
+            if not utils.isPasswordValid(pass1):
+                error="Password invalido"
+                flash(error)
+                return render_template("register.html")
+
+            if not utils.isPasswordValid(c_pass1):
+                error="Password invalido"
+                flash(error)
+                return render_template("register.html")
+
+            if (c_pass1 !=pass1):
+                error="Password no coincide"
+                flash(error)
+                return render_template("register.html")
+
+            if not utils.isEmailValid(email):
+                error="Correo invalido"
+                flash(error)
+                return render_template("register.html")
+           
+            yag=yagmail.SMTP("pruebamintic2022","Jmd12345678")
+            print("Paso por yag.")
+            yag.send(to=email, subject="Activa tu cuenta", contents="Bienvenido, usa este link para activar tu cuenta")
+            flash("Revisa tu correo para activar tu cuenta")        
+            return render_template("login.html")
+        
+        return render_template("register.html")
+    except:
+        return render_template("register.html")
 
 if __name__=='__main__':
     app.run(debug=True, port=8080)  
