@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Helostoma temminckii</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    {% if sesion_iniciada %}
+      <p>Bienvenido</p>
+    {% else %}
+      <p>Para poder ver la publicaciones debes inciar sesion: <a href="/publicaciones">[Click aquí]</a></p>
+      <br>
+      <p>Para poder ver los mensajes debes inciar sesion: <a href="/msg">[Click aquí]</a></p>
+    {% endif %}
+
+    <section class="hero is-dark is-fullheight">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <header class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <img
+                  src="https://bulma.io/images/bulma-type-white.png"
+                  alt="Logo"
+                />
+              </a>
+              <span class="navbar-burger" data-target="navbarMenuHeroC">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroC" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item is-active"> Inicio </a>
+                <a href="/ingreso" class="navbar-item"> Inicia sesion </a>
+				<a href="/publicaciones" class="navbar-item"> Publicaciones </a>
+                <span class="navbar-item">
+                  <a href="/register" class="button is-dark is-inverted">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Registrate</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </header>
+      </div>
+
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          
+          <p class="title">Registrate a la red social</p>
+          <p class="subtitle">Encuentra imagenes de todo tipo</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, ipsum delectus excepturi deleniti tempore pariatur nostrum atque hic culpa asperiores sint modi maxime aliquid, nulla sequi ad, iure ratione. Temporibus!</p>
+          <a href="/register" class="button is-medium">Registrate</a>
+        </div>
+      </div>
+
+      <!-- Hero footer: will stick at the bottom -->
+      <div class="hero-foot">
+        <nav class="tabs is-boxed is-fullwidth">
+          <div class="container">
+            <ul>
+              <li><a>Preguntas frecuentes</a></li>
+              <li><a>Terminos y condiciones</a></li>
+              <li><a>Politicas de privacidad</a></li>
+              <li><a>Contactos</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
+  </body>
+</html>
