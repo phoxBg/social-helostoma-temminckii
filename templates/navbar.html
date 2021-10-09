@@ -33,7 +33,9 @@
           <a class="navbar-link"> Username </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item"> Mensajes privados </a>
+            <a href="{{ url_for('msg') }}" class="navbar-item">
+              Mensajes privados
+            </a>
             <a class="navbar-item"> Mi perfil </a>
             <a class="navbar-item"> Editar perfil </a>
             <hr class="navbar-divider" />
