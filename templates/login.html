@@ -1,52 +1,56 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Social Helostoma temminckii</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-  </head>
-  <body>
-    <section class="hero is-light is-fullheight">
-      <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <div class="columns">
-            <div class="column is-three-fifths is-offset-one-fifth">
-              <form class="box" action="/ingreso" method="POST">
-                {{ csrf_token }}
-                <div class="field">
-                  <label class="label">Email</label>
-                  <div class="control">
-                    <input
-                      class="input"
-                      type="email"
-                      placeholder="e.g. alex@example.com"
-                    />
-                  </div>
-                </div>
+{% extends 'base.html' %}
 
-                <div class="field">
-                  <label class="label">Password</label>
-                  <div class="control">
-                    <input
-                      class="input"
-                      type="password"
-                      placeholder="********"
-                    />
-                  </div>
-                </div>
+<!--block title-->
+{% block title %}{{ super() }}Inicia sesion{% endblock title %}
 
-                <button class="button is-primary">Sign in</button>
-              </form>
+<!--block content-->
+{% block content %}
+<!--block content-->
+<section class="hero is-medium is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5 is-4-desktop">
+          <h2 class="title has-text-centered">Inicia sesion</h2>
+          <form class="box" action="/ingreso" method="POST">
+            {{ csrf_token }}
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="email"
+                  placeholder="e.g. alex@example.com"
+                  autofocus="true"
+                  autocomplete="fullname"
+                  required="true"
+                  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                  style="text-transform: lowercase"
+                  onkeyup="javascript:this.value=this.value.toLowerCase();"
+                />
+              </div>
             </div>
-          </div>
+            <div class="field">
+              <label class="label">Contraseña</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="password"
+                  placeholder="Contraseña"
+                  required="true"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <button class="button is-primary is-fullwidth">
+                Inicia sesion!
+              </button>
+            </div>
+            <a href="{{ url_for('index') }}">Social helostoma temminckii</a>
+          </form>
         </div>
       </div>
-    </section>
-  </body>
-</html>
+    </div>
+  </div>
+</section>
+{% endblock content %}
