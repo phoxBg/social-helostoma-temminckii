@@ -5,14 +5,13 @@
 
 <!--block content-->
 {% block content %}
-
 <!--block content-->
 <section class="hero is-medium is-light">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-5 is-4-desktop">
-          <h2 class="title">Inicia sesion</h2>
+          <h2 class="title has-text-centered">Inicia sesion</h2>
           <form class="box" action="/ingreso" method="POST">
             {{ csrf_token }}
             <div class="field">
@@ -26,13 +25,15 @@
               </div>
             </div>
             <div class="field">
-              <label class="label">Password</label>
+              <label class="label">Contraseña</label>
               <div class="control">
-                <input class="input" type="password" placeholder="Password" />
+                <input class="input" type="password" placeholder="Contraseña" />
               </div>
             </div>
             <div class="field">
-              <button class="button is-primary is-fullwidth">Sign in!</button>
+              <button class="button is-primary is-fullwidth">
+                Inicia sesion!
+              </button>
             </div>
             <a href="{{ url_for('index') }}">Social helostoma temminckii</a>
           </form>
