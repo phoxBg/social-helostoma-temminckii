@@ -21,13 +21,24 @@
                   class="input"
                   type="email"
                   placeholder="e.g. alex@example.com"
+                  autofocus="true"
+                  autocomplete="fullname"
+                  required="true"
+                  pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                  style="text-transform: lowercase"
+                  onkeyup="javascript:this.value=this.value.toLowerCase();"
                 />
               </div>
             </div>
             <div class="field">
               <label class="label">Contraseña</label>
               <div class="control">
-                <input class="input" type="password" placeholder="Contraseña" />
+                <input
+                  class="input"
+                  type="password"
+                  placeholder="Contraseña"
+                  required="true"
+                />
               </div>
             </div>
             <div class="field">
