@@ -60,5 +60,59 @@ lista_mensaje={
 }
 
 
+# Se crea esta variable para probar el inicio de sesion.
+sesion_iniciada=False
+
+
+@app.route("/", methods=["GET"])
+@app.route("/index", methods=["GET"])
+def index():
+    #Si ya inicio Sesion ->Lista de publicaciones Feed.
+    #Sino -> Bienvenida
+    #return render_template("register.html")
+    return render_template("index.html", sesion_iniciada=sesion_iniciada)
+
+@app.route("/ingreso",methods=["GET","POST"])
+def ingreso():
+    global sesion_iniciada
+    if request.method=="GET":
+        return render_template("login.html")
+    else:
+        sesion_iniciada=True
+        return redirect('/index')
+
+
+@app.route("/salir",methods=["GET","POST"])
+def salir():
+    global sesion_iniciada
+    sesion_iniciada=False
+    return redirect('/index')
+
+
+@app.route("/perfil",methods=["GET","POST"])
+def perfil():
+        return "Pagina de Perfil de usuario"  #perfil.html
+
+#Perfil usuarios
+
+@app.route("/usuario/<id_usuario>",methods=["GET"])
+def usuario_informacion(id_usuario):
+    #validacion simple de usuario
+    if id_usuario in usuarios_sistema:
+        return f"Pagina del Perfil del usuario {id_usuario}"
+    else:
+        return f"Error, el usuario {id_usuario} no exite en la base de datos"   
+
+#Perfil admin
+@app.route("/admin/<id_admin>",methods=["GET"])
+def admin_informacion(id_admin):
+    return f"Pagina del Perfil del usuario Admin {id_admin}"    
+
+#Perfil superadmin
+@app.route("/superadmin/<id_superadmin>",methods=["GET"])
+def superadmin_informacion(id_superadmin):
+    return f"Pagina del Perfil del usuario Superadmin {id_superadmin}"        
+
+
 if __name__=='__main__':
     app.run(debug=True, port=8080)  
