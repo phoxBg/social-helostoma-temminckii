@@ -31,7 +31,7 @@ lista_publicaciones={
     128:{'titulo':"publicaciones #6",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
     129:{'titulo':"publicaciones #7",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
     130:{'titulo':"publicaciones #8",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
-    131:{'titulo':"publicaciones #9",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},    
+    131:{'titulo':"publicaciones #9",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
 }
 
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
@@ -56,7 +56,7 @@ lista_mensaje={
     228:{'mensaje':"Mensaje #6",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     229:{'mensaje':"Mensaje #7",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     230:{'mensaje':"Mensaje #8",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
-    231:{'mensaje':"Mensaje #9",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},    
+    231:{'mensaje':"Mensaje #9",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
 }
 
 
@@ -101,21 +101,21 @@ def usuario_informacion(id_usuario):
     if id_usuario in usuarios_sistema:
         return f"Pagina del Perfil del usuario {id_usuario}"
     else:
-        return f"Error, el usuario {id_usuario} no exite en la base de datos"   
+        return f"Error, el usuario {id_usuario} no exite en la base de datos"
 
 #Perfil admin
 @app.route("/admin/<id_admin>",methods=["GET"])
 def admin_informacion(id_admin):
-    return f"Pagina del Perfil del usuario Admin {id_admin}"    
+    return f"Pagina del Perfil del usuario Admin {id_admin}"
 
 #Perfil superadmin
 @app.route("/superadmin/<id_superadmin>",methods=["GET"])
 def superadmin_informacion(id_superadmin):
-    return f"Pagina del Perfil del usuario Superadmin {id_superadmin}"        
+    return f"Pagina del Perfil del usuario Superadmin {id_superadmin}"
 
 @app.route("/publicaciones",methods=["GET"])
 def publicacion():
-    #return "Pagina de todas las publicaciones"  #publicaciones.html   
+    #return "Pagina de todas las publicaciones"  #publicaciones.html
     return render_template("publicaciones.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista_publicaciones)
 
 @app.route("/detalle_pub/<id_publicacion>",methods=["GET","POST"])
@@ -128,12 +128,12 @@ def detalle_pub(id_publicacion):
     if id_publicacion in lista_publicaciones:
         return lista_publicaciones[id_publicacion]
     else:
-        return f"Error, la publicacion {id_publicacion} no exite en la base de datos"      
-        #return f"Pagina detalle de la publicacion {id_publicacion}"  #detalla_pub.html      
+        return f"Error, la publicacion {id_publicacion} no exite en la base de datos"
+        #return f"Pagina detalle de la publicacion {id_publicacion}"  #detalla_pub.html
 
 @app.route("/msg",methods=["GET"])
 def msg():
-    #return f"Pagina de Mensajes"  #msg.html   
+    #return f"Pagina de Mensajes"  #msg.html
     return render_template("mensajes.html", sesion_iniciada=sesion_iniciada,lista_mensaje=lista_mensaje)
 
 
@@ -142,13 +142,13 @@ def msg_privado(id_msg):
     try:
         id_msg=int(id_msg)
     except Exception as e:
-        id_publicacion=0   
+        id_publicacion=0
 
     if id_msg in lista_mensaje:
         return lista_mensaje[id_msg]
     else:
-        return f"Error, el mensaje {id_msg} no exite en la base de datos"   
-    #return f"Pagina - Mensaje privado : {id_msg}"  #msg_privado.html       
+        return f"Error, el mensaje {id_msg} no exite en la base de datos"
+    #return f"Pagina - Mensaje privado : {id_msg}"  #msg_privado.html
 
 @app.route("/register" , methods=["GET","POST"])
 def register():
@@ -156,15 +156,15 @@ def register():
         if request.method=="POST":
             user1=request.form["username"]
             pass1=request.form["password"]
-            c_pass1=request.form["c_password"]            
+            c_pass1=request.form["c_password"]
             email=request.form["correo"]
             error = None
-            
+
             if not utils.isUsernameValid(user1):
                 error ="El usuario no es correcto"
                 flash(error)
                 return render_template("register.html")
-            
+
             if not utils.isPasswordValid(pass1):
                 error="Password invalido"
                 flash(error)
@@ -184,16 +184,16 @@ def register():
                 error="Correo invalido"
                 flash(error)
                 return render_template("register.html")
-           
+
             yag=yagmail.SMTP("pruebamintic2022","Jmd12345678")
             print("Paso por yag.")
             yag.send(to=email, subject="Activa tu cuenta", contents="Bienvenido, usa este link para activar tu cuenta")
-            flash("Revisa tu correo para activar tu cuenta")        
+            flash("Revisa tu correo para activar tu cuenta")
             return render_template("login.html")
-        
+
         return render_template("register.html")
     except:
         return render_template("register.html")
 
 if __name__=='__main__':
-    app.run(debug=True, port=8080)  
+    app.run(debug=True, port=8080)
