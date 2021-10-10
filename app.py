@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 #Se crea una lista de usuarios para el tema de logica algoritmica simple.
-usuarios_sistema=["Braya","Fernando","Sergio","Giovanny","Jairo"]
+usuarios_sistema=["Brayan","Fernando","Sergio","Giovanny","Jairo"]
 
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
 lista_publicaciones1={

@@ -1,31 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicaciones</title>
-    <br>
-    {% if  sesion_iniciada==False %}
-        <p>Bienvenido</p>
-        <br>
-        {%  for key, publicacion in lista_publicaciones.items() %}
-            <h2>{{ publicacion.titulo }}</h2>
-            <p>{{ publicacion.cuerpo }}</p>
-            {%  for imagen in publicacion.imagenes %}
-                <p>{{imagen}} <a href="/publicaciones/{{key}}">[Click aquí]</a> </p>
-            {%endfor%}
-        {%endfor%}
+{% extends 'base.html' %}
 
-        <form action="/salir" method="post">
-            {{ csrf_token }}
-            <input type="submit" name="" value="Salir">
-        </form>
-    {% else %}
-    <p>Para poder ver la publicaciones debes inciar sesion: <a href="/publicaciones">[Click aquí]</a></p>
-    {% endif %}        
-</head>
-<body>
-    
-</body>
-</html>
+<!--block title-->
+{% block title %}{{ super() }}Publicaciones{% endblock title %}
+
+<!--block content-->
+{% block content %}
+
+<br />
+{% if sesion_iniciada==False %}
+<p>Bienvenido</p>
+<br />
+{% for key, publicacion in lista_publicaciones.items() %}
+<h2>{{ publicacion.titulo }}</h2>
+<p>{{ publicacion.cuerpo }}</p>
+{% for imagen in publicacion.imagenes %}
+<p>{{imagen}} <a href="/publicaciones/{{key}}">[Click aquí]</a></p>
+{%endfor%} {%endfor%}
+
+<form action="/salir" method="post">
+  {{ csrf_token }}
+  <input type="submit" name="" value="Salir" />
+</form>
+{% else %}
+<p>
+  Para poder ver la publicaciones debes inciar sesion:
+  <a href="/publicaciones">[Click aquí]</a>
+</p>
+{% endif %} {% endblock content %}
