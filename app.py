@@ -63,8 +63,10 @@ lista_mensaje={
 # Se crea esta variable para probar el inicio de sesion.
 sesion_iniciada=False
 
-
+# Ruta Raiz ----------------------
 @app.route("/", methods=["GET"])
+
+# Index ----------------------
 @app.route("/index", methods=["GET"])
 def index():
     #Si ya inicio Sesion ->Lista de publicaciones Feed.
@@ -72,6 +74,7 @@ def index():
     #return render_template("register.html")
     return render_template("index.html", sesion_iniciada=sesion_iniciada)
 
+# Ingreso ----------------------
 @app.route("/ingreso",methods=["GET","POST"])
 def ingreso():
     global sesion_iniciada
@@ -81,20 +84,19 @@ def ingreso():
         sesion_iniciada=True
         return redirect('/index')
 
-
+# Salir ----------------------
 @app.route("/salir",methods=["GET","POST"])
 def salir():
     global sesion_iniciada
     sesion_iniciada=False
     return redirect('/index')
 
-
+# Perfil ----------------------
 @app.route("/perfil",methods=["GET","POST"])
 def perfil():
         return "Pagina de Perfil de usuario"  #perfil.html
 
-#Perfil usuarios
-
+# Perfil usuarios ---------------------------
 @app.route("/usuario/<id_usuario>",methods=["GET"])
 def usuario_informacion(id_usuario):
     #validacion simple de usuario ..............................................
@@ -103,8 +105,7 @@ def usuario_informacion(id_usuario):
     else:
         return f"Error, el usuario {id_usuario} no exite en la base de datos"
 
-#Perfil admin  ..............
-
+# Perfil admin  ..............
 @app.route("/admin/<id_admin>",methods=["GET"])
 def admin_informacion(id_admin):
     if id_admin in usuarios_sistema:
@@ -112,8 +113,7 @@ def admin_informacion(id_admin):
     else:
         return f"Error, el usuario {id_admin} no exite en la base de datos"
 
-#Perfil superadmin ............
-
+# Perfil superadmin ............
 @app.route("/superadmin/<id_superadmin>",methods=["GET"])
 def superadmin_informacion(id_superadmin):
     if id_superadmin in usuarios_sistema:
@@ -121,11 +121,13 @@ def superadmin_informacion(id_superadmin):
     else:
         return f"Error, el usuario {id_superadmin} no exite en la base de datos"
 
+# Publicaciones --------------
 @app.route("/publicaciones",methods=["GET"])
 def publicacion():
     #return "Pagina de todas las publicaciones"  #publicaciones.html .....................
     return render_template("publicaciones.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista_publicaciones)
 
+# Detalle de las publicaciones -----------
 @app.route("/detalle_pub/<id_publicacion>",methods=["GET","POST"])
 def detalle_pub(id_publicacion):
     try:
@@ -139,12 +141,21 @@ def detalle_pub(id_publicacion):
         return f"Error, la publicacion {id_publicacion} no exite en la base de datos"
         #return f"Pagina detalle de la publicacion {id_publicacion}"  #detalla_pub.html
 
+# Busqueda de usuario ---------------------------
+@app.route("/busqueda/<id_usuario>",methods=["GET","POST"])
+def busqueda_usuario(id_usuario):
+    if id_usuario in usuarios_sistema:
+        return usuarios_sistema[id_usuario]
+    else:
+        return f"El usuario que buscas no existe: {id_usuario}"
+
+# Mensajes ---------------------
 @app.route("/msg",methods=["GET"])
 def msg():
     #return f"Pagina de Mensajes"  #msg.html
     return render_template("mensajes.html", sesion_iniciada=sesion_iniciada,lista_mensaje=lista_mensaje)
 
-
+# Mensajes privados --------------
 @app.route("/msg_privado/<id_msg>",methods=["GET","POST"])
 def msg_privado(id_msg):
     try:
@@ -158,6 +169,7 @@ def msg_privado(id_msg):
         return f"Error, el mensaje {id_msg} no exite en la base de datos"
     #return f"Pagina - Mensaje privado : {id_msg}"  #msg_privado.html
 
+# Registrar ---------------------------
 @app.route("/register" , methods=["GET","POST"])
 def register():
     try:
