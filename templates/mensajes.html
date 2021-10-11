@@ -14,16 +14,16 @@
             <h2>{{ mensajes.titulo }}</h2>
             <p>{{ mensajes.cuerpo }}</p>
             {%  for calificacion in mensajes.calificaciones %}
-                <p>{{calificacion}} <a href="/msg/{{key}}">[Click aquí]</a> </p>
+                <p>{{calificacion}} <a href="{{ url_for('msg') }}/{{key}}">[Click aquí]</a> </p>
             {%endfor%}
         {%endfor%}
 
-        <form action="/salir" method="post">
+        <form action="{{ url_for('salir') }}" method="post">
             {{ csrf_token }}
             <input type="submit" name="" value="Salir">
         </form>
     {% else %}
-    <p>Para poder ver los mensajes debes inciar sesion: <a href="/msg">[Click aquí]</a></p>
+    <p>Para poder ver los mensajes debes inciar sesion: <a href="{{ url_for('msg') }}">[Click aquí]</a></p>
     {% endif %}        
-    
+
 {% endblock content %}
