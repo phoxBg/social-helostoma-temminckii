@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensajes</title>
-    <br>
-    {% if  sesion_iniciada==False %}
+{% extends 'base.html' %}
+
+<!--block title-->
+{% block title %}{{ super() }}Publicaciones{% endblock title %}
+
+<!--block content-->
+{% block content %}
+
+<br>
+    {% if  sesion_iniciada %}
         <p>Bienvenido</p>
         <br>
         {%  for key, mensajes in lista_mensaje.items() %}
@@ -24,8 +25,5 @@
     {% else %}
     <p>Para poder ver los mensajes debes inciar sesion: <a href="/msg">[Click aquí]</a></p>
     {% endif %}        
-</head>
-<body>
     
-</body>
-</html>
+{% endblock content %}

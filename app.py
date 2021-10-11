@@ -124,6 +124,7 @@ def superadmin_informacion(id_superadmin):
 # Publicaciones --------------
 @app.route("/publicaciones",methods=["GET"])
 def publicacion():
+    global sesion_iniciada
     #return "Pagina de todas las publicaciones"  #publicaciones.html .....................
     return render_template("publicaciones.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista_publicaciones)
 
@@ -145,13 +146,14 @@ def detalle_pub(id_publicacion):
 @app.route("/busqueda/<id_usuario>",methods=["GET","POST"])
 def busqueda_usuario(id_usuario):
     if id_usuario in usuarios_sistema:
-        return usuarios_sistema[id_usuario]
+        return f"El usuario que buscas Existe: {id_usuario}, en la Base de Datos."
     else:
         return f"El usuario que buscas no existe: {id_usuario}"
 
 # Mensajes ---------------------
 @app.route("/msg",methods=["GET"])
 def msg():
+    global sesion_iniciada
     #return f"Pagina de Mensajes"  #msg.html
     return render_template("mensajes.html", sesion_iniciada=sesion_iniciada,lista_mensaje=lista_mensaje)
 
@@ -172,6 +174,7 @@ def msg_privado(id_msg):
 # Registrar ---------------------------
 @app.route("/register" , methods=["GET","POST"])
 def register():
+    global sesion_iniciada
     try:
         if request.method=="POST":
             user1=request.form["username"]
