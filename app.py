@@ -82,7 +82,7 @@ def ingreso():
         return render_template("login.html")
     else:
         sesion_iniciada=True
-        return redirect('/index')
+        return redirect('/publicaciones')
 
 # Salir ----------------------
 @app.route("/salir",methods=["GET","POST"])
