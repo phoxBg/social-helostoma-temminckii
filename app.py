@@ -10,18 +10,6 @@ app.secret_key = os.urandom(24)
 usuarios_sistema=["Brayan","Fernando","Sergio","Giovanny","Jairo"]
 
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
-lista_publicaciones1={
-    123:"Publicacion No 1",
-    124:"Publicacion No 2",
-    125:"Publicacion No 3",
-    126:"Publicacion No 4",
-    127:"Publicacion No 5",
-    128:"Publicacion No 6",
-    129:"Publicacion No 7",
-    130:"Publicacion No 8",
-    131:"Publicacion No 9",
-}
-
 lista_publicaciones={
     123:{'titulo':"publicaciones #1",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
     124:{'titulo':"publicaciones #2",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
@@ -35,18 +23,6 @@ lista_publicaciones={
 }
 
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
-lista_mensaje1={
-    223:"Mensaje No 1",
-    224:"Mensaje No 2",
-    225:"Mensaje No 3",
-    226:"Mensaje No 4",
-    227:"Mensaje No 5",
-    228:"Mensaje No 6",
-    229:"Mensaje No 7",
-    230:"Mensaje No 8",
-    231:"Mensaje No 9",
-}
-
 lista_mensaje={
     223:{'mensaje':"Mensaje #1",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     224:{'mensaje':"Mensaje #2",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
