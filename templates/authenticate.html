@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% block title %}Social helostoma temminckii |{% endblock title %}
+    </title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.png') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main.css') }}"
+    />
+  </head>
+  <body>
+    <section class="hero is-fullheight img-user-login">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-three-fifths is-offset-one-fifth">
+              <main>{% block content %}{% endblock content %}</main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
