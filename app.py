@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, flash, redirect, Req
 import yagmail
 import utils
 import os
+import random
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -20,8 +21,8 @@ lista_usuarios={
     105:{'user':"Jairo",'full_name':"Jairo Viñas",'birth':['07','08','1989'],'email':"Jairo@gmail.com",'genre':"Masculino",'tipo':"admin"},
     106:{'user':"Shary",'full_name':"Shary Tutora",'birth':['08','06','1999'],'email':"Shary@gmail.com",'genre':"Masculino",'tipo':"usuario"},
 }
-
-
+#print(lista_usuarios[101])
+#print(lista_usuarios[random.randint(101,106)])
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
 lista_publicaciones={
     123:{'titulo':"publicaciones #1",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
@@ -35,13 +36,73 @@ lista_publicaciones={
     131:{'titulo':"publicaciones #9",'cuerpo': "Publicacion Cuerpo",'imagenes':['img 1','img 2','img 3','img 4']},
 }
 
+lista__publicaciones={
+    2001:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2002:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2003:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2004:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2005:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2006:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2007:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2008:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2009:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,1,1,1,1]},
+    2010:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,0,0,0]},
+    2011:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2012:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2013:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2014:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2015:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2016:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2017:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2018:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2019:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2020:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2021:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2022:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2023:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2024:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2025:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2026:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2027:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2028:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2029:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2030:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2031:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2032:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2033:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2034:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2035:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2036:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2037:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2038:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2039:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2040:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2041:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2042:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2043:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2044:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2045:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2046:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2047:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2048:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2049:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+    2050:{'titulo':"Publicación hecha por: usuario 101",'contenido':"Publicacion Cuerpo",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
+}
+
+print(lista__publicaciones)
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
 lista_mensaje={
     223:{'mensaje':"Mensaje #1",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
+    223:{'mensaje':"Mensaje #1",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
+    224:{'mensaje':"Mensaje #2",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     224:{'mensaje':"Mensaje #2",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     225:{'mensaje':"Mensaje #3",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
+    225:{'mensaje':"Mensaje #3",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
+    226:{'mensaje':"Mensaje #4",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     226:{'mensaje':"Mensaje #4",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     227:{'mensaje':"Mensaje #5",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
+    227:{'mensaje':"Mensaje #5",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
+    228:{'mensaje':"Mensaje #6",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     228:{'mensaje':"Mensaje #6",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     229:{'mensaje':"Mensaje #7",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
     230:{'mensaje':"Mensaje #8",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
