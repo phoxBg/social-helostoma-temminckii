@@ -70,7 +70,7 @@ def salir():
 # Perfil ----------------------
 @app.route("/perfil",methods=["GET","POST"])
 def perfil():
-        return "Pagina de Perfil de usuario"  #perfil.html
+        return render_template("perfil.html", sesion_iniciada=sesion_iniciada)
 
 # Perfil usuarios ---------------------------
 @app.route("/usuario/<id_usuario>",methods=["GET"])
