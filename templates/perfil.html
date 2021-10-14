@@ -28,25 +28,6 @@
               luctus turpis.
             </p>
           </div>
-          <nav class="level is-mobile">
-            <div class="level-left">
-              <a class="level-item" aria-label="reply">
-                <span class="icon is-small">
-                  <i class="fas fa-reply" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="retweet">
-                <span class="icon is-small">
-                  <i class="fas fa-retweet" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="like">
-                <span class="icon is-small">
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                </span>
-              </a>
-            </div>
-          </nav>
         </div>
       </article>
     </div>
@@ -55,286 +36,53 @@
 <section class="section">
   <div class="container">
     <div class="columns is-multiline">
+      {% for key, publicacion in lista_publicaciones.items() %}
       <div class="column is-6-tablet is-3-desktop">
         <div class="card" style="height: 100%">
           <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
+            <figure class="image is-2by1">
+              <img
+                src="http://lorempixel.com/1280/960/sports"
+                alt="Placeholder image"
+              />
+            </figure>
           </div>
           <div class="card-content">
-            <div class="block">
-              <small class="is-size-7"
-                >13 Octubre 2021 | By Dinesh Chugtai</small
-              >
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img
+                    src="http://lorempixel.com/96/96/people"
+                    alt="Placeholder image"
+                    class="is-rounded"
+                  />
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{ publicacion.titulo }}</p>
+                <p class="subtitle is-6">
+                  username {{ publicacion.id_usuario }}
+                </p>
+              </div>
             </div>
-            <h5 class="title is-6">
-              <a href="#">Why I'm the Best Programmer Ever</a>
-            </h5>
-            <p>
-              I feel like not everybody outside of Pied Piper knows it, so I
-              wanted to make it clear why I'm the best programmer in the world.
-            </p>
+
+            <div class="content">
+              {{ publicacion.contenido }}
+              <p class="subtitle is-6">
+                Calificación: {{ publicacion.calificacion_id }}
+                <img
+                  src="{{ url_for('static', filename='images/favicon.png') }}"
+                  alt="Placeholder image"
+                  width="24px"
+                  style="vertical-align: bottom"
+                />
+              </p>
+              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            </div>
           </div>
         </div>
       </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7"
-                >13 Octubre 2021 | By Bertram Gilfoyle</small
-              >
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Secrets of Decentralization</a>
-            </h5>
-            <p>
-              What makes decentralization so great? Let me enlighten you with my
-              wisdom
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Monica Hall</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">How Our ICO Almost Failed</a>
-            </h5>
-            <p>
-              This is a short story about how we uncovered an insane problem
-              with our ICO, fixed it, and still managed to secure vast funding.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="column is-6-tablet is-3-desktop">
-        <div class="card" style="height: 100%">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">13 Octubre 2021 | By Jared Dunn</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why Strong Tea Isn't Good For CEOs</a>
-            </h5>
-            <p>
-              An exhaustive guide about how different teas can affect a CEO
-              during their workday.
-            </p>
-          </div>
-        </div>
-      </div>
+      {%endfor%}
     </div>
   </div>
 </section>

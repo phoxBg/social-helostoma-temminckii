@@ -139,10 +139,8 @@ def ingreso():
                 sesion_iniciada=True
                 return redirect('/publicaciones')
                 break
-        cadena=f"Error, el email {email} no exite en la base de datos"            
-        return render_template('login.html',cadena=cadena)                
-   
-        
+        cadena=f"Error, el email {email} no exite en la base de datos"
+        return render_template('login.html',cadena=cadena)
 
 
         #sesion_iniciada=True
@@ -158,7 +156,7 @@ def salir():
 # Perfil ----------------------
 @app.route("/perfil",methods=["GET","POST"])
 def perfil():
-        return "Pagina de Perfil de usuario"  #perfil.html
+        return render_template("perfil.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista__publicaciones)
 
 # Perfil usuarios ---------------------------
 @app.route("/usuario/<id_usuario>",methods=["GET"])
