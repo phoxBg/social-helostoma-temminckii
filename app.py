@@ -172,10 +172,12 @@ def usuario_informacion(id_usuario):
         return f"Error, el usuario {id_usuario} no exite en la base de datos"
 
 # Perfil admin  ..............
-@app.route("/admin/<id_admin>",methods=["GET"])
+@app.route("/admin/<id_admin>",methods=["GET","POST"])
 def admin_informacion(id_admin):
-    if id_admin in usuarios_sistema:
-        return f"Pagina del Perfil del usuario Admin {id_admin}"   #validacion simple de Perfil admin
+    id_admin=int(id_admin)
+    if id_admin in lista_usuarios:
+        #return f"Pagina del Perfil del usuario Admin {id_admin}"   #validacion simple de Perfil admin
+        return render_template("dashboard.html", sesion_iniciada=sesion_iniciada,lista_usuarios=lista_usuarios)
     else:
         return f"Error, el usuario {id_admin} no exite en la base de datos"
 
@@ -202,8 +204,9 @@ def detalle_pub(id_publicacion):
     except Exception as e:
         id_publicacion=0
 
-    if id_publicacion in lista_publicaciones:
-        return lista_publicaciones[id_publicacion]
+    if id_publicacion in lista__publicaciones:
+        #return lista__publicaciones[id_publicacion]
+        return render_template("publicacion.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista__publicaciones, id_publicacion=id_publicacion)
     else:
         return f"Error, la publicacion {id_publicacion} no exite en la base de datos"
         #return f"Pagina detalle de la publicacion {id_publicacion}"  #detalla_pub.html
