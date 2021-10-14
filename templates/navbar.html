@@ -29,25 +29,29 @@
         <a href="{{ url_for('publicacion') }}" class="navbar-item">
           Publicaciones
         </a>
+        <a href="{{ url_for('msg') }}" class="navbar-item">
+          Mensajes privados
+        </a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link"> Username </a>
 
           <div class="navbar-dropdown">
-            <a href="{{ url_for('msg') }}" class="navbar-item">
-              Mensajes privados
-            </a>
             <a href="{{ url_for('perfil') }}" class="navbar-item">
               Mi perfil
             </a>
-            <a class="navbar-item"> Editar perfil </a>
+            <a href="{{ url_for('perfil_edit') }}" class="navbar-item">
+              Editar perfil
+            </a>
             <hr class="navbar-divider" />
-            <a class="navbar-item" href="{{ url_for('salir') }}"> Cerrar sesion </a>
+            <a class="navbar-item" href="{{ url_for('salir') }}">
+              Cerrar sesion
+            </a>
           </div>
         </div>
         {% else %}
         <div class="navbar-item">
           <div class="buttons">
-            <a href="{{ url_for('register') }}" class="button is-primary">
+            <a href="{{ url_for('register') }}" class="button is-link">
               <strong>Registrate</strong>
             </a>
             <a href="{{ url_for('ingreso') }}" class="button is-light">

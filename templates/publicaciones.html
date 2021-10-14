@@ -9,28 +9,6 @@
   <div class="container">
     <div class="columns">
       <div class="column is-7">
-        <div class="card">
-          <div class="card-image">
-            <a href="#"
-              ><img
-                src="https://bulma.dev/placeholder/pictures/bg_4-3.svg?primary=00d1b2"
-                alt=""
-            /></a>
-          </div>
-          <div class="card-content">
-            <div class="block">
-              <small class="is-size-7">25 Jun 2019 | By Dinesh Chugtai</small>
-            </div>
-            <h5 class="title is-6">
-              <a href="#">Why I'm the Best Programmer Ever</a>
-            </h5>
-            <p>
-              I feel like not everybody outside of Pied Piper knows it, so I
-              wanted to make it clear why I'm the best programmer in the world.
-            </p>
-          </div>
-        </div>
-        <br />
         {% for key, publicacion in lista_publicaciones.items() %}
         <div class="card">
           <div class="card-image">
@@ -54,16 +32,23 @@
               </div>
               <div class="media-content">
                 <p class="title is-4">{{ publicacion.titulo }}</p>
-                <p class="subtitle is-6">username {{ publicacion.id_usuario }}</p>
-                
+                <p class="subtitle is-6">
+                  username {{ publicacion.id_usuario }}
+                </p>
               </div>
             </div>
 
             <div class="content">
               {{ publicacion.contenido }}
-              <p class="subtitle is-6">Calificación: {{ publicacion.calificacion_id }}           
-                   <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="Placeholder image" width="24px" style="vertical-align:bottom"/>
-              </p>   
+              <p class="subtitle is-6">
+                Calificación: {{ publicacion.calificacion_id }}
+                <img
+                  src="{{ url_for('static', filename='images/favicon.png') }}"
+                  alt="Placeholder image"
+                  width="24px"
+                  style="vertical-align: bottom"
+                />
+              </p>
               <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
             </div>
           </div>
@@ -87,7 +72,7 @@
                 </div>
               </div>
               <h5 class="title is-5">Richard Hendricks</h5>
-              <p class="subtitle is-6">CEO</p>
+              <p class="subtitle is-6">username</p>
               <p>
                 When I'm not obsessively stressing about the fate of Pied Piper,
                 I sometimes give lectures to school kids. Spend most of my time
@@ -101,25 +86,3 @@
   </div>
 </section>
 {% endblock content %}
-
-<br />
-{% if sesion_iniciada %}
-<p>Bienvenido</p>
-<br />
-{% for key, publicacion in lista_publicaciones.items() %}
-<h2>{{ publicacion.titulo }}</h2>
-<p>{{ publicacion.cuerpo }}</p>
-{% for imagen in publicacion.imagenes %}
-<p>{{imagen}} <a href="/publicaciones/{{key}}">[Click aquí]</a></p>
-{%endfor%} {%endfor%}
-
-<form action="/salir" method="post">
-  {{ csrf_token }}
-  <input type="submit" name="" value="Salir" />
-</form>
-{% else %}
-<p>
-  Para poder ver la publicaciones debes inciar sesion:
-  <a href="/publicaciones">[Click aquí]</a>
-</p>
-{% endif %}
