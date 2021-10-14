@@ -11,7 +11,7 @@
         <p>Bienvenido</p>
         <br>
         {%  for key, mensajes in lista_mensaje.items() %}
-            <h2>{{ mensajes.titulo }}</h2>
+            <h2>{{ mensajes.mensaje }}</h2>
             <p>{{ mensajes.cuerpo }}</p>
             {%  for calificacion in mensajes.calificaciones %}
                 <p>{{calificacion}} <a href="{{ url_for('msg') }}/{{key}}">[Click aquí]</a> </p>

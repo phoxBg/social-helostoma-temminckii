@@ -14,12 +14,12 @@ usuarios_sistema=["Brayan","Fernando","Sergio","Geovanny","Jairo"]
 #Se crea un diccionario de usuarios reuniniendo los requisitos del sistema by Geo
     # ID:{'user':"string",'fullname': "string",'birth':['dia', 'mes', 'año'],'email': "string",'genre':"string",'tipo': "string"}
 lista_usuarios={
-    101:{'user':"Brayan",'full_name':"Brayan Díaz",'birth':['03','12','1980'],'email':"Brayan@gmail.com",'genre':"Masculino",'tipo':"super_admin"},
+    101:{'user':"Brayan",'full_name':"Brayan Díaz",'birth':['03','12','1980'],'email':"brayan@gmail.com",'genre':"Masculino",'tipo':"super_admin"},
     102:{'user':"Fernando",'full_name':"Fernando Sandoval",'birth':['04','11','1999'],'email':"fernando@gmail.com",'genre':"Masculino",'tipo':"usuario"},
     103:{'user':"Sergio",'full_name':"Sergio Balcazar",'birth':['05','10','1980'],'email':"sergio@gmail.com",'genre':"Masculino",'tipo':"usuario"},
     104:{'user':"Geovanny",'full_name':"Geovanny Rambauth",'birth':['06','09','2000'],'email':"geovanny@gmail.com",'genre':"Masculino",'tipo':"usuario"},
-    105:{'user':"Jairo",'full_name':"Jairo Viñas",'birth':['07','08','1989'],'email':"Jairo@gmail.com",'genre':"Masculino",'tipo':"admin"},
-    106:{'user':"Shary",'full_name':"Shary Tutora",'birth':['08','06','1999'],'email':"Shary@gmail.com",'genre':"Masculino",'tipo':"usuario"},
+    105:{'user':"Jairo",'full_name':"Jairo Viñas",'birth':['07','08','1989'],'email':"jairo@gmail.com",'genre':"Masculino",'tipo':"admin"},
+    106:{'user':"Shary",'full_name':"Shary Tutora",'birth':['08','06','1999'],'email':"shary@gmail.com",'genre':"Masculino",'tipo':"usuario"},
 }
 #print(lista_usuarios[101])
 #print(lista_usuarios[random.randint(101,106)])
@@ -131,8 +131,22 @@ def ingreso():
     if request.method=="GET":
         return render_template("login.html")
     else:
-        sesion_iniciada=True
-        return redirect('/publicaciones')
+        email=request.form["email"]
+
+        for key, usuarios in lista_usuarios.items():
+            #print(usuarios["email"])
+            if email==usuarios["email"]:
+                sesion_iniciada=True
+                return redirect('/publicaciones')
+                break
+        cadena=f"Error, el email {email} no exite en la base de datos"            
+        return render_template('login.html',cadena=cadena)                
+   
+        
+
+
+        #sesion_iniciada=True
+        #return redirect('/publicaciones')
 
 # Salir ----------------------
 @app.route("/salir",methods=["GET","POST"])
