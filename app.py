@@ -213,6 +213,12 @@ def detalle_pub(id_publicacion):
         #return f"Pagina detalle de la publicacion {id_publicacion}"  #detalla_pub.html
 
 # Busqueda de usuario ---------------------------
+@app.route("/busqueda/",methods=["GET","POST"])
+def busqueda():
+        return render_template("busqueda.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista__publicaciones)
+
+
+# Busqueda de usuario ---------------------------
 @app.route("/busqueda/<id_usuario>",methods=["GET","POST"])
 def busqueda_usuario(id_usuario):
     id_usuario=int(id_usuario)
