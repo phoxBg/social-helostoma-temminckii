@@ -86,25 +86,3 @@
   </div>
 </section>
 {% endblock content %}
-
-<br />
-{% if sesion_iniciada %}
-<p>Bienvenido</p>
-<br />
-{% for key, publicacion in lista_publicaciones.items() %}
-<h2>{{ publicacion.titulo }}</h2>
-<p>{{ publicacion.cuerpo }}</p>
-{% for imagen in publicacion.imagenes %}
-<p>{{imagen}} <a href="/publicaciones/{{key}}">[Click aquí]</a></p>
-{%endfor%} {%endfor%}
-
-<form action="/salir" method="post">
-  {{ csrf_token }}
-  <input type="submit" name="" value="Salir" />
-</form>
-{% else %}
-<p>
-  Para poder ver la publicaciones debes inciar sesion:
-  <a href="/publicaciones">[Click aquí]</a>
-</p>
-{% endif %}
