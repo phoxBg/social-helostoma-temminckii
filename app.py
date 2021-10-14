@@ -166,7 +166,8 @@ def perfil_edit():
 @app.route("/usuario/<id_usuario>",methods=["GET"])
 def usuario_informacion(id_usuario):
     #validacion simple de usuario ..............................................
-    if id_usuario in usuarios_sistema:
+    id_usuario=int(id_usuario)
+    if id_usuario in lista_usuarios:
         return f"Pagina del Perfil del usuario {id_usuario}"    #validacion simple de usuario
     else:
         return f"Error, el usuario {id_usuario} no exite en la base de datos"
@@ -177,7 +178,7 @@ def admin_informacion(id_admin):
     id_admin=int(id_admin)
     if id_admin in lista_usuarios:
         #return f"Pagina del Perfil del usuario Admin {id_admin}"   #validacion simple de Perfil admin
-        return render_template("dashboard.html", sesion_iniciada=sesion_iniciada,lista_usuarios=lista_usuarios)
+        return render_template("dashboard.html", sesion_iniciada=sesion_iniciada,lista_usuarios=lista_usuarios, id_admin=id_admin)
     else:
         return f"Error, el usuario {id_admin} no exite en la base de datos"
 
@@ -214,8 +215,10 @@ def detalle_pub(id_publicacion):
 # Busqueda de usuario ---------------------------
 @app.route("/busqueda/<id_usuario>",methods=["GET","POST"])
 def busqueda_usuario(id_usuario):
-    if id_usuario in usuarios_sistema:
-        return f"El usuario que buscas Existe: {id_usuario}, en la Base de Datos."
+    id_usuario=int(id_usuario)
+    if id_usuario in lista_usuarios:
+        #return f"El usuario que buscas Existe: {id_usuario}, en la Base de Datos."
+        return render_template("busqueda.html", sesion_iniciada=sesion_iniciada,lista_usuarios=lista_usuarios, id_usuario=id_usuario,lista_publicaciones=lista__publicaciones)
     else:
         return f"El usuario que buscas no existe: {id_usuario}"
 
