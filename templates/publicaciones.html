@@ -53,14 +53,17 @@
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">full_name</p>
-                <p class="subtitle is-6">username</p>
+                <p class="title is-4">{{ publicacion.titulo }}</p>
+                <p class="subtitle is-6">username {{ publicacion.id_usuario }}</p>
+                
               </div>
             </div>
 
             <div class="content">
-              {{ publicacion.cuerpo }}
-              <br />
+              {{ publicacion.contenido }}
+              <p class="subtitle is-6">Calificación: {{ publicacion.calificacion_id }}           
+                   <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="Placeholder image" width="24px" style="vertical-align:bottom"/>
+              </p>   
               <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
             </div>
           </div>
