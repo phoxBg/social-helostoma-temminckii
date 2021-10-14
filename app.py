@@ -21,6 +21,7 @@ lista_usuarios={
     105:{'user':"Jairo",'full_name':"Jairo Viñas",'birth':['07','08','1989'],'email':"jairo@gmail.com",'genre':"Masculino",'tipo':"admin"},
     106:{'user':"Shary",'full_name':"Shary Tutora",'birth':['08','06','1999'],'email':"shary@gmail.com",'genre':"Masculino",'tipo':"usuario"},
 }
+
 #print(lista_usuarios[101])
 #print(lista_usuarios[random.randint(101,106)])
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
@@ -109,7 +110,6 @@ lista_mensaje={
     231:{'mensaje':"Mensaje #9",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
 }
 
-
 # Se crea esta variable para probar el inicio de sesion.
 sesion_iniciada=False
 
@@ -157,6 +157,10 @@ def salir():
 @app.route("/perfil",methods=["GET","POST"])
 def perfil():
         return render_template("perfil.html", sesion_iniciada=sesion_iniciada,lista_publicaciones=lista__publicaciones)
+
+@app.route("/perfil_edit",methods=["GET","POST"])
+def perfil_edit():
+        return render_template("perfil_edit.html", sesion_iniciada=sesion_iniciada)
 
 # Perfil usuarios ---------------------------
 @app.route("/usuario/<id_usuario>",methods=["GET"])
