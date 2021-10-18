@@ -1,8 +1,28 @@
 from flask import Flask, render_template, request, url_for, flash, redirect, Request
 import yagmail
+from settings import config
 import utils
 import os
 import random
+import sqlite3
+from sqlite3 import Error
+from datetime import date
+
+# En tu programa que utiliza el paquete package
+#from settings import create_connection
+from settings.config import create_connection
+from forms import formRegister
+from registers import * #register, sql_insert_user,sql_get_user
+
+
+from markupsafe import escape #Cambia lo ingresado en el formulario a texto
+
+import hashlib #Criptografia
+from werkzeug.security import generate_password_hash 
+from werkzeug.security import check_password_hash
+
+
+
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -90,7 +110,7 @@ lista__publicaciones={
     2050:{'titulo':"Publicación hecha por: usuario 105",'contenido':"La idea aquí es hacer publicaciones comparando tu producto o servicio con la competencia en el mercado.  Por ejemplo, en un asunto que aquí nos compete en nuestro blog, sería hacer el comparativo entre el marketing de contenidos y la publicidad. No obstante, para que este tipo de contenidos gane relevancia, a veces es interesante que presentes algunos casos en los que tu producto NO es la mejor opción. #50",'fecha_inicio':"datetimeinicio",'fecha_final':"datetimefin",'id_usuario':"101",'img_id':"idimagen",'estado':"0",'calificacion_id':[1,0,1,1,0]},
 }
 
-print(lista__publicaciones)
+#print(lista__publicaciones)
 #Se crea un dicicionario de publicaciones con la finalidad de validar la algoritmica simple
 lista_mensaje={
     223:{'mensaje':"Mensaje #1",'cuerpo': "Mensaje Cuerpo",'calificaciones':['img Calificacion 1','img Calificacion 2','img Calificacion 3','img Calificacion 4']},
@@ -141,6 +161,8 @@ def ingreso():
                 break
         cadena=f"Error, el email {email} no exite en la base de datos"
         return render_template('login.html',cadena=cadena)
+
+
 
 
         #sesion_iniciada=True
@@ -250,7 +272,68 @@ def msg_privado(id_msg):
     #return f"Pagina - Mensaje privado : {id_msg}"  #msg_privado.html
 
 # Registrar ---------------------------
-@app.route("/register" , methods=["GET","POST"])
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    form = formRegister()
+    return render_template("register.html", form=form)
+
+@app.route('/register/save', methods=["POST"]) #Ruta para guardar claves
+def encriptar():
+    form=formRegister()
+    if request.method == "POST":
+        usuario=escape(form.usuario.data)
+        correo=escape(form.correo.data)
+        clave=escape(form.clave.data)
+        clave1=escape(form.clave1.data)
+        estado=escape(form.estado.data)
+        hashclave=generate_password_hash(clave) #se genera el hash + salt critografia.
+        is_active=1
+        created_at=date.today()
+        id_type=1
+
+        if (clave !=clave1):
+            error="Password no coincide"
+            flash(error)
+            return render_template("register.html", form=form)
+            #Registro en la base de datos.   
+            #  
+        try:
+
+            if (sql_get_user(usuario)==False):
+                if (sql_get_email(correo)==False):
+                    #metodo para hacer insert a la base de datos. Se encuentra en la clase register.py
+                    sql_insert_user(usuario, correo,hashclave,is_active,created_at,id_type)
+                    flash("usuario registrado con Exito")
+                    return render_template("login.html")   
+                else:
+                    flash("Correo ya esta registrado en la Base de datos.")
+                    return render_template("register.html", form=form)                    
+            else:
+                flash("usuario ya esta registrado en la Base de datos.")
+                return render_template("register.html", form=form) 
+
+        except Error:
+            return render_template("register.html", form=form) 
+        #Metodo de envio de correo.             
+    '''
+        conn =create_connection("helostoma.db") 
+        with conn as con:
+            try:
+                cur = con.cursor()                                
+                cur.execute("INSERT INTO user (username,email, password,is_active, created_at,id_type) VALUES(?,?,?,?,?,?) ", (usuario, correo,hashclave,is_active,created_at,id_type))
+                con.commit
+                flash("usuario registrado con Exito")
+                return render_template("login.html")
+            except Error:
+                con.rollback()
+                return render_template("register.html") 
+    '''
+       
+
+    return "No metodo POST"
+
+
+'''@app.route("/register" , methods=["GET","POST"])
 def register():
     global sesion_iniciada
     try:
@@ -295,6 +378,7 @@ def register():
         return render_template("register.html")
     except:
         return render_template("register.html")
-
+'''
 if __name__=='__main__':
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=8081)
+    
