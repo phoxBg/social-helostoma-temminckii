@@ -37,7 +37,6 @@ function consultar_login(){
 
 function crear_register(){
     document.getElementById("formRegister").action="/register/save"
-<<<<<<< HEAD
 }
 
 function ir_publicaciones(){
@@ -50,6 +49,4 @@ function actualizar_register(){
 
 function ir_register(){
     document.getElementById("formEditProfile").action="/perfil_edit/"
-=======
->>>>>>> 953fed156032ab0ec9715d1993d3b23cdd333721
 }
