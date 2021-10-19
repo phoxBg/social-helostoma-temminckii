@@ -85,6 +85,7 @@ def sql_get_email(correo):
                 else:
                     return True    
             except Error:
+<<<<<<< HEAD
                 print(Error)  
 
 def sql_get_user_info(usuario):
@@ -142,3 +143,6 @@ def sql_get_email_profile(usuario,correo):
                     return False   
             except Error:
                 print(Error)              
+=======
+                print(Error)           
+>>>>>>> 953fed156032ab0ec9715d1993d3b23cdd333721

@@ -11,7 +11,11 @@ from datetime import date
 # En tu programa que utiliza el paquete package
 #from settings import create_connection
 from settings.config import create_connection
+<<<<<<< HEAD
 from forms import formEditProfile, formRegister
+=======
+from forms import formRegister
+>>>>>>> 953fed156032ab0ec9715d1993d3b23cdd333721
 from registers import * #register, sql_insert_user,sql_get_user
 
 
