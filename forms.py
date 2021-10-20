@@ -6,9 +6,6 @@ from wtforms.validators import Length, Email
 from wtforms.fields import TextAreaField
 
 
-
-
-
 '''class formEstudiante(FlaskForm):
     documento=StringField('Documento', validators=[DataRequired(message="no dejar Vacio")], render_kw={'placeholder':'Identificación', 'class':'form_control'})
     nombre=StringField('Nombre', validators=[DataRequired(message="no dejar Vacio")], render_kw={'placeholder':'Nombre', 'class':'form_control'})
