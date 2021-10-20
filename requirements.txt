@@ -3,3 +3,4 @@ yagmail
 utils
 validate_email
 random
+faker
