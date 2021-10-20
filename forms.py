@@ -59,7 +59,6 @@ class  formRegister(FlaskForm):
     estado=BooleanField('Estado',render_kw={'type':'checkbox', 'required':'true'})    
     guardar = SubmitField('Registrate!', render_kw={'onmouseover':'crear_register()',  'class':'button is-link is-fullwidth', 'type':'submit', 'value':'Registrate!'} )    
 
-<<<<<<< HEAD
 
 class  formEditProfile(FlaskForm):
     usuario = StringField('Usuario', validators=[DataRequired(message='No dejar vacio')], render_kw={'placeholder':'Usuario', 'class':'input','type':'text', 'id':'username', 'autocomplete':'username', 'required':'true', 'placeholder':'pepitoperez','readonly': True} )
@@ -90,6 +89,3 @@ class  formEditProfile(FlaskForm):
     #estado=BooleanField('Estado',render_kw={'type':'checkbox', 'required':'true'})    ---actualizar_register()
     guardar = SubmitField('Guardar', render_kw={'onmouseover':'actualizar_register()',  'class':'button is-link is-fullwidth', 'type':'submit', 'value':'Guardar'} )    
     cancelar = SubmitField('Cancelar', render_kw={'onmouseover':'ir_publicaciones()',  'class':'button is-link is-light', 'type':'submit', 'value':'Cancelar'} )    
-=======
-  
->>>>>>> 953fed156032ab0ec9715d1993d3b23cdd333721
